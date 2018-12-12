@@ -1,12 +1,34 @@
 const fs = require('fs');
 var sleep = require('sleep');
 
-function readFilePromise() {
-  // psst, the promise should be around here...
+function readFilePromise(file) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(file, (err, data) => {
+      sleep.sleep(2)
+      err? reject(err): resolve(JSON.parse(data))
+    })
+  })
 }
 
 function matchParentsWithChildrens(parentFileName, childrenFileName) {
-  // your code here... (p.s. readFilePromise function(s) should be around here..)
+  let parentData = []
+  readFilePromise(parentFileName)
+    .then(parent => {
+      parentData = parent
+      return readFilePromise(childrenFileName)
+    })
+    .then(childrenData => {
+      parentData.forEach(parent => {
+        parent.children = []
+        childrenData.forEach(child => {
+          child.family === parent.last_name ? parent.children.push(child.full_name): false
+        });
+      });
+      console.log(parentData);
+    })
+    .catch(err => {
+      console.log({msg: 'Terjadi error pada proses pembacaan data', err: err});
+    })
 }
 
 matchParentsWithChildrens('./parents.json', './childrens.json');

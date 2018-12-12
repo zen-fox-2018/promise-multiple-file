@@ -9,6 +9,15 @@
   "author": "Windiana",
   "license": "ISC",
   "dependencies": {
-    "sleep": "^5.1.1"
-  }
+    "sleep": "^5.2.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zen-fox-2018/promise-multiple-file.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zen-fox-2018/promise-multiple-file/issues"
+  },
+  "homepage": "https://github.com/zen-fox-2018/promise-multiple-file#readme"
 }

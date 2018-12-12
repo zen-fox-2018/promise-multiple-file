@@ -29,7 +29,7 @@ function matchParentsWithChildrens(parentFileName, childrenFileName) {
 
   return readFilePromise(parentFileName)
     .then((data) => {
-      // sleep.sleep(5);
+      sleep.sleep(5);
 
       promiseData = JSON.parse(data);
 
@@ -37,7 +37,7 @@ function matchParentsWithChildrens(parentFileName, childrenFileName) {
     })
 
     .then(data => {
-      // sleep.sleep(5);
+      sleep.sleep(5);
       let children = JSON.parse(data);
 
       for (let i = 0; i < promiseData.length; i++) {
